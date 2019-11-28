@@ -1,0 +1,41 @@
+{
+  "name": "begemot-plus",
+  "description": "An pet project on Python and Django by FonVald",
+  "repository": "https://not.yet",
+  "website": "https://not.yet",
+  "logo": "https://not.yet",
+  "keywords": [
+    "django",
+    "begemot"
+  ],
+  "image": "heroku/python",
+  "env": {
+    "SECRET_KEY": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "WEB_CONCURRENCY":{
+      "description": "count workers for Gunicorn",
+      "value": "3",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "scripts": {
+    "postdeploy": "python manage.py makemigrations && python manage.py migrate"
+  },
+  "addons": [
+    "sendgrid:starter"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://git.heroku.com/api-backend-canchas.git"
+    }
+  ],
+  "success_url": "/api"
+}
