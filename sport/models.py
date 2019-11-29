@@ -10,7 +10,7 @@ class Company(models.Model):
     address = models.CharField(max_length=100)
     phone = models.CharField(max_length=25)
     email = models.EmailField(unique=True)
-    image = models.ImageField(upload_to='pictures')
+    image = models.ImageField(upload_to='staticfiles/admin/companies', null=True)
 
     def __str__(self):
         return self.name + ', ' + self.address 
