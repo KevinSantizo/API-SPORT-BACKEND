@@ -21,7 +21,8 @@ from sport.serializer import (
     CustomerReservationSerializer,
     FieldScheduleSerializer,
     MakeReservationSerializer,
-    UserReservationTodaySeralizer
+    UserReservationTodaySeralizer,
+    UserReservationGreaterThanEqualSeralizer
     )
 
 
@@ -151,3 +152,10 @@ class UserReservationTodayViewSet(viewsets.ModelViewSet):
     authentication_classes = []
     queryset = Profile.objects.all()
     serializer_class = UserReservationTodaySeralizer
+
+
+class UserReservationGreaterThanEqualViewSet(viewsets.ModelViewSet):
+    permission_classes = []
+    authentication_classes = []
+    queryset = Profile.objects.all()
+    serializer_class = UserReservationGreaterThanEqualSeralizer

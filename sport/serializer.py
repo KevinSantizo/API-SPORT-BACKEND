@@ -186,3 +186,21 @@ class UserReservationTodaySeralizer(serializers.ModelSerializer):
 
 
 
+class UserReservationGreaterThanEqualSeralizer(serializers.ModelSerializer):
+    reservations = serializers.SerializerMethodField('greater_than_equal_reservation')
+    quantity= serializers.SerializerMethodField('get_reservations')
+
+    def greater_than_equal_reservation(self, customer_reserve):
+        today = date.today()
+        res = Reservation.objects.filter(schedule_date__gte=today, customer_reserve=customer_reserve)
+        serializer = DoReservationSerializer(instance=res, many=True)
+        return serializer.data
+
+    def get_reservations(self, customer_reserve):
+            today = date.today()
+            q = Reservation.objects.filter(schedule_date__gte=today, customer_reserve=customer_reserve).count()
+            return q
+
+    class Meta:
+        model = Profile
+        fields = ('id', 'first_name', 'last_name', 'username', 'town', 'phone', 'email', 'password', 'reservations', 'quantity')
