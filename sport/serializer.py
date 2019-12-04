@@ -79,7 +79,7 @@ class FieldChildSerializer(serializers.ModelSerializer):
 
     def get_schedules(self, field):
         today = date.today()
-        sch = Schedule.objects.filter(start_time__gte=datetime.now(), date=today, status__exact=2, field=field)
+        sch = Schedule.objects.filter(status__exact=2, field=field)
         serializer = DoScheduleSerializer(instance=sch, many=True)
         return serializer.data
 
@@ -145,13 +145,13 @@ class FieldScheduleSerializer(serializers.ModelSerializer):
 
     def get_schedules(self, field):
         today = date.today()
-        sch = Schedule.objects.filter(start_time__gte=datetime.now(), status__exact=2, date=today, field=field)
+        sch = Schedule.objects.filter(status__exact=2, field=field)
         serializer = DoScheduleSerializer(instance=sch, many=True)
         return serializer.data
 
     def count_schedules(self, field):
         today = date.today()
-        sch = Schedule.objects.filter(start_time__gte=datetime.now(), status__exact=2, date=today, field=field).count()
+        sch = Schedule.objects.filter(status__exact=2 field=field).count()
         return sch
 
     class Meta:
