@@ -43,7 +43,7 @@ router.register('user-reservations', CustomerReservationViewSet)
 router.register('thefield', FieldScheduleViewSet)
 router.register('make-reservation', MakeReservationViewSet)
 router.register('user-reservation-today', UserReservationTodayViewSet)
-router.register('user-reservation-pending', UserReservationGreaterThanEqualSeralizer)
+router.register('user-reservation-pending', UserReservationGreaterThanEqualSeralizer, base_name='UserReservationGreaterThanEqual')
 
 
 
