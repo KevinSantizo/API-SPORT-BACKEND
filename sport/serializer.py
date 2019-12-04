@@ -144,14 +144,12 @@ class FieldScheduleSerializer(serializers.ModelSerializer):
     quantity = serializers.SerializerMethodField('count_schedules')
 
     def get_schedules(self, field):
-        today = date.today()
         sch = Schedule.objects.filter(status__exact=2, field=field)
         serializer = DoScheduleSerializer(instance=sch, many=True)
         return serializer.data
 
     def count_schedules(self, field):
-        today = date.today()
-        sch = Schedule.objects.filter(status__exact=2 field=field).count()
+        sch = Schedule.objects.filter(status__exact=2, field=field).count()
         return sch
 
     class Meta:
