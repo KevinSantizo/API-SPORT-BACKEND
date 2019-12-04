@@ -18,7 +18,7 @@ from sport.viewsets import (
      FieldScheduleViewSet,
      MakeReservationViewSet,
      UserReservationTodayViewSet,
-     UserReservationGreaterThanEqualSeralizer
+     UserReservationGreaterThanEqualSeralizerViewSet
 )
 from sport import views
 from django.urls import path
