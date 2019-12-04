@@ -58,7 +58,7 @@ class Reservation(models.Model):
 
     def __str__(self):
         return  'Customer: ' + self.customer_reserve.first_name + ' --- Type Field: --- ' + self.field_reserve.type + ' --- Date Reserved: --- ' \
-               + str(self.schedule_date) + ' --- Price: --- ' + str(self.field_reserve.price) + self.implement.name
+               + str(self.schedule_date) + ' --- Price: --- ' + str(self.field_reserve.price)
 
 
 
